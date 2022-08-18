@@ -14,14 +14,21 @@ function updateCaseNumber(isIncrease) {
     return newCaseNumber;
 }
 
-document.getElementById('btn-case-plus').addEventListener('click', function () {
-    const newCaseNumber = updateCaseNumber(true);
-    
+function updatePhoneTotalPrice(newCaseNumber) {
     const caseTotalPrice = newCaseNumber * 59;
     const caseTotalElement = document.getElementById('case-total');
     caseTotalElement.innerText = caseTotalPrice;
+}
+
+document.getElementById('btn-case-plus').addEventListener('click', function () {
+    const newCaseNumber = updateCaseNumber(true);
+    
+    updatePhoneTotalPrice(newCaseNumber);
+    
 });
 
 document.getElementById('case-number-minus').addEventListener('click', function () {
-    updateCaseNumber(false);
+    const newCaseNumber = updateCaseNumber(false);
+
+    updatePhoneTotalPrice(newCaseNumber);
 });
